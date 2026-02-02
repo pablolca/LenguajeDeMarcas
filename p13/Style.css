@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --blanco: #ffffff;
+    --gris-claro: #f0f2f5;
+    --gris-borde: #e1e1e1;
+    --negro: #333333;
+    --rosa: #ffb6c1;
+    --azul: #007bff;
+    --rojo-fondo: #ffcccc;
+    --rojo-texto: #cc0000;
+    --verde-fondo: #ccffcc;
+    --verde-texto: #006600;
+
+    --ancho-maximo: 87.5rem;
+    --relleno-cuerpo: 1.5rem;
+    --relleno-tarjeta: 1.25rem;
+    --separacion: 1.25rem;
+    --radio-borde: 0.625rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: var(--relleno-cuerpo);
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--gris-claro);
+    color: var(--negro);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-header {
+    width: 100%;
+    max-width: var(--ancho-maximo);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    background-color: var(--blanco);
+    padding: 1rem;
+    border-radius: var(--radio-borde);
+}
+
+.logo {
+    max-width: 9.5rem;
+    height: auto;
+}
+
+.main-nav {
+    flex-grow: 1;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--negro);
+    font-weight: 600;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--azul);
+}
+
+.main-container {
+    display: grid;
+    gap: var(--separacion);
+    width: 100%;
+    max-width: var(--ancho-maximo);
+    margin: 0 auto;
+    grid-auto-rows: 1fr;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--blanco);
+    border-radius: var(--radio-borde);
+    padding: var(--relleno-tarjeta);
+    border: 0.0625rem solid var(--gris-borde);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card p {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.card_label {
+    background-color: var(--rosa);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    width: fit-content;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.feedback {
+    margin-top: 3rem;
+    width: 18.75rem;
+    background-color: var(--blanco);
+    padding: 1rem;
+    border-radius: var(--radio-borde);
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.feedback p {
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.feedback-options {
+    display: flex;
+    gap: 0.5rem;
+    height: 3rem;
+}
+
+.option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: flex 0.3s ease;
+}
+
+.option.bad {
+    background-color: var(--rojo-fondo);
+    color: var(--rojo-texto);
+}
+
+.option.good {
+    background-color: var(--verde-fondo);
+    color: var(--verde-texto);
+}
+
+.option:hover {
+    flex: 3;
+}
+
+@media (max-width: 37.5rem) {
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .main-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
+
+@media (min-width: 37.51rem) and (max-width: 56.25rem) {
+    .main-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 56.26rem) {
+    .main-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
