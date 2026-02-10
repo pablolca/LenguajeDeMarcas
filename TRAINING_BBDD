@@ -1,0 +1,43 @@
+/*primera consulta*/
+
+SELECT c.nombre, c.fecha_inicio, c.fecha_fin, n.nombre_pais
+FROM competicion c
+NATURAL JOIN nacionalidad n
+WHERE n.nombre_pais  LIKE 'Estados Unidos';
+
+/*segunda consulta*/
+
+SELECT e.id AS evento, d.nombre AS disciplina, c.nombre AS competicion
+FROM eventos e
+INNER JOIN disciplinas d ON e.id_disciplina = d.id
+INNER JOIN competicion c ON e.id_competicion = c.id
+WHERE YEAR(c.fecha_inicio) = 2023
+ORDER BY d.distancia;
+
+/*tercera consulta*/
+
+SELECT n.nombre_pais AS Nombre, n.codpais AS codigo, COUNT(*) AS cantidad_atletas
+FROM atletas a
+INNER JOIN nacionalidad n ON a.pais = n.codpais
+GROUP BY n.codpais, n.nombre_pais
+HAVING COUNT(*) >= 2
+ORDER BY cantidad_atletas DESC;
+
+/*cuarta consulta*/
+
+SELECT d.id, d.nombre, MIN(r.resultado), MAX(r.resultado) 
+FROM competicion c 
+JOIN eventos e ON e.id_competicion = c.id 
+JOIN disciplinas d  ON e.id_disciplina = d.id 
+JOIN resultados r ON e.id = r.id_evento 
+WHERE c.nombre = 'Mundial de Atletismo 2023' 
+GROUP BY d.nombre 
+ORDER BY MIN(r.resultado);
+
+/*quinta consulta*/
+
+/*sexta consulta*/
+SELECT nombre 
+FROM disciplinas 
+WHERE es_masculina = FALSE 
+AND distancia <600;
